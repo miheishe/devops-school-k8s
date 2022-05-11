@@ -1,0 +1,35 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: deploy-view
+rules:
+- apiGroups: ["", "extensions", "apps"]
+  resources: ["deployments", "replicasets"] #ReplicaSets necessary if has in Deployment
+  verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: pod-view
+rules:
+- apiGroups: ["", "extensions", "apps"]
+  resources: ["pods"] 
+  verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: deploy-edit
+rules:
+- apiGroups: ["", "extensions", "apps"]
+  resources: ["deployments", "replicasets"] #ReplicaSets necessary for creating a Deployment
+  verbs: ["*"] 
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: pod-edit
+rules:
+- apiGroups: ["", "extensions", "apps"]
+  resources: ["pods"] #ReplicaSets necessary for creating a Deployment
+  verbs: ["*"] 

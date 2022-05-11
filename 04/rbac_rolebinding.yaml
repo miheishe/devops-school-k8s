@@ -1,0 +1,51 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: deploy-view-binding
+subjects:
+- kind: User
+  name: deploy_view
+  apiGroup: ""
+roleRef:
+  kind: Role
+  name: deploy-view
+  apiGroup: ""
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: pod-view-binding
+subjects:
+- kind: User
+  name: deploy_view
+  apiGroup: ""
+roleRef:
+  kind: Role
+  name: pod-view
+  apiGroup: ""
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: deploy-edit-binding
+subjects:
+- kind: User
+  name: deploy_edit
+  apiGroup: ""
+roleRef:
+  kind: Role
+  name: deploy-edit
+  apiGroup: ""
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: pod-edit-binding
+subjects:
+- kind: User
+  name: deploy_edit
+  apiGroup: ""
+roleRef:
+  kind: Role
+  name: pod-edit
+  apiGroup: ""
